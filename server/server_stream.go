@@ -14,7 +14,7 @@ func (s *helloServer) SayHelloServerStreaming(req *pb.NamesList, stream pb.Greet
 		if err := stream.Send(res); err != nil{
 			return err
 		}
-		time.Sleep(1*time.Second)
+		time.Sleep(2*time.Second)
 	}
 	return nil
 
