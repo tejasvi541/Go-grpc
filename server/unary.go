@@ -11,3 +11,4 @@ func (s *helloServer) SayHello(ctx context.Context, req *pb.NoParam) (*pb.HelloR
 	log.Printf("Received: %v", req)
 	return &pb.HelloResponse{Message: "Hello from the server!"}, nil
 }
+
