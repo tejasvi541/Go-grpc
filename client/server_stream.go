@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"io"
 	"log"
 	"time"
 
@@ -21,9 +22,13 @@ func callSayHelloServerStream(client pb.GreetServiceClient, names *pb.NamesList)
 
 	for {
 		res, err := stream.Recv()
+		if err == io.EOF{
+			break
+		}
 		if err != nil {
 			log.Fatalf("Failed to receive from stream: %v", err)
 		}
 		log.Printf("Response: %v", res.Message)
 	}
+	log.Printf("Finished receiving from stream")
 }
